@@ -5,7 +5,7 @@ Manages empty states for lists
 
 
 ```	
-<ul data-attribute="users-list" class="hide">
+<ul id="users-list">
 	<li data-empty>
 		You have not added any users to the system.
 	</li>
@@ -13,4 +13,11 @@ Manages empty states for lists
 		... Rendering of a user ...
 	</li>
 </ul>
+```
+
+
+Then with Javascript
+
+```
+$("#users_list").watchList();
 ```
