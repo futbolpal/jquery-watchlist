@@ -21,3 +21,5 @@ Then with Javascript
 ```
 $("#users_list").watchList();
 ```
+
+Compatibility: IE9+
