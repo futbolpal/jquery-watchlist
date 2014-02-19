@@ -1,5 +1,5 @@
 (function($, window, undefined) {
-    $.fn.watchList = function(){
+    $.fn.watchList = function(method){
         /**
         * This function handles a dom tree update and determines whether to show the
         * clones or the data-empty div
@@ -13,6 +13,10 @@
                 o.children('[data-empty]').show();
             }
         };
+
+        var clearWatchList = function(o){
+            o.children(":not([data-clone])").remove();
+        }
 
         var doWatchList = function(o){
             // START - Verify the element conforms
@@ -28,8 +32,14 @@
             o.trigger("DOMSubtreeModified");
         }
 
-        return this.each(function(i, e){
-            doWatchList($(e));
-        });
+        if(method === 'clear'){
+            return this.each(function(i, e){
+                clearWatchList($(e));
+            });
+        } else {
+            return this.each(function(i, e){
+                doWatchList($(e));
+            });
+        }
     }
 })(jQuery, window);
